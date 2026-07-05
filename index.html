@@ -513,11 +513,11 @@ function buildPrintHTML(d){
     .row2{ display:flex; justify-content:space-between; align-items:flex-start; }
     .leftcol{ flex:1; padding-right:18px; }
     .custline{ display:flex; align-items:baseline; gap:12px; margin-top:6px; }
-    .custline .name{ font-family:"Yu Mincho","Hiragino Mincho ProN",serif; font-size:17px; border-bottom:1.5px solid #222; min-width:330px; padding:0 6px 3px; font-weight:600; }
+    .custline .name{ font-family:"Yu Mincho","Hiragino Mincho ProN",serif; font-size:17px; border-bottom:1.5px solid #222; min-width:330px; padding:0 6px 3px; font-weight:600; text-align:center; }
     .custline .onaka{ font-family:"Yu Mincho",serif; font-size:20px; }
     .subjline{ display:flex; align-items:baseline; gap:12px; margin-top:12px; }
     .subjline .lbl{ font-family:"Yu Mincho",serif; font-size:15px; }
-    .subjline .val{ font-family:"Yu Mincho",serif; font-size:13px; border-bottom:1.5px solid #222; min-width:300px; padding:0 6px 3px; }
+    .subjline .val{ font-family:"Yu Mincho",serif; font-size:13px; border-bottom:1.5px solid #222; min-width:300px; padding:0 6px 3px; text-align:center; }
     .amtline{ display:flex; align-items:baseline; gap:10px; margin-top:12px; }
     .amtline .lbl{ font-family:"Yu Mincho",serif; font-size:14px; }
     .amtline .val{ font-family:"Yu Mincho",serif; font-size:20px; border-bottom:1.5px solid #222; min-width:220px; text-align:center; padding:0 8px 2px; }
@@ -530,7 +530,7 @@ function buildPrintHTML(d){
     table.tbl{ width:100%; border-collapse:collapse; font-size:11.5px; }
     table.tbl thead th{ background:#00CCFF; color:#111; padding:4px; font-weight:700; border:1px solid #555; }
     table.tbl td{ border:1px solid #555; padding:4px 5px; height:20px; text-align:center; font-weight:700; }
-    table.tbl td.desc{ text-align:left; }
+    table.tbl td.desc{ text-align:center; }
     .bottomflex{ display:flex; justify-content:space-between; align-items:flex-start; margin-top:4px; }
     .remark{ font-size:10px; max-width:55%; font-weight:400; }
     .remark .lbl{ font-weight:700; margin-bottom:2px; }
@@ -754,7 +754,7 @@ document.getElementById('excelBtn').addEventListener('click', async () => {
   // --- 件名 ---
   ws.getRow(7).height = 27;
   ws.mergeCells('A7:B7'); set(ws,'A7','件名', {font:{name:'游明朝', size:14, bold:false}});
-  ws.mergeCells('C7:O7'); set(ws,'C7', d.subject, {font:{name:'游明朝', size:12, bold:false}, align:{horizontal:'left'}, border:UNDER_MED});
+  ws.mergeCells('C7:O7'); set(ws,'C7', d.subject, {font:{name:'游明朝', size:12, bold:false}, border:UNDER_MED});
 
   // --- 見積金額 ---
   ws.getRow(9).height = 30;
