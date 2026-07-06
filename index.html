@@ -116,6 +116,8 @@
     max-width:640px; margin:0 auto;
   }
   .btn{ flex:1; padding:13px 6px; border-radius:11px; border:none; font-size:13.5px; font-weight:700; cursor:pointer; letter-spacing:.01em; white-space:nowrap; }
+  .btn-pc{ opacity:0.5; }
+  @media (min-width:640px){ .btn-pc{ opacity:1; } }
   @media (max-width:420px){ .btn{ font-size:12.5px; padding:12px 4px; } .pc-only{ display:none; } }
   .btn-primary{ background:var(--blue); color:#fff; }
   .btn-secondary{ background:#fff; color:var(--blue-deep); border:1.5px solid var(--blue); }
@@ -197,7 +199,7 @@
 <div class="footerbar">
   <button class="btn btn-primary" id="pdfBtn">PDFを保存</button>
   <button class="btn btn-secondary" id="excelBtn">Excel作成</button>
-  <button class="btn btn-secondary" id="printBtn">印刷<span class="pc-only">（PC）</span></button>
+  <button class="btn btn-secondary btn-pc" id="printBtn" title="PC専用機能です">🖨 印刷<span class="pc-only">（PC専用）</span></button>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -601,6 +603,11 @@ function buildPrintHTML(d){
 }
 
 document.getElementById('printBtn').addEventListener('click', () => {
+  // スマホ（画面幅640px未満）では警告を表示
+  if(window.innerWidth < 640){
+    const ok = confirm('この機能はPC専用です。\nスマホからはPDFを保存ボタンをご利用ください。\n\n続行しますか？');
+    if(!ok) return;
+  }
   try{
     const d = collectFormData();
     const html = buildPrintHTML(d);
